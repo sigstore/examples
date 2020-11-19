@@ -95,9 +95,6 @@ def monitor_site(poll_interval):
 
 
 def post_arch():
-    # TODO check if we have the pub key
-    gpg = gnupg.GPG(gnupghome='/tmp/.gnupg')
-
     if not os.path.isdir(arch_dir):
         logging.error(
             f"{arch_dir} does not exist, you likely need to run --download_archive first")
