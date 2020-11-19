@@ -1,6 +1,4 @@
-# Rekor monitors
+# Rekor examples
 
-This repository contains various scripts to gather materials from various software release sites
-and serialize the signing content into the rekor json format. Typically run as cron jobs or using
-sensible timers, they will retrieve new release signing material when available and automatically
-update rekors transparency log.
+This repository contains example code and rekor populators (scripts that pull down information
+from release sites and load them into rekor).
