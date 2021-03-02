@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestamper
+spec:
+  selector:
+    matchLabels:
+      app: timestamper
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: timestamper
+    spec:
+      containers:
+      - image: ko://github.com/sigstore/examples/audit
+        name: timestamper
+        workingDir: /var/lib/timestamper
+        ports:
+        - containerPort: 8080
+          name: timestamper
+        volumeMounts:
+        - name: timestamper-persistent-storage
+          mountPath: /var/lib/timestamper
+      volumes:
+      - name: timestamper-persistent-storage
+        persistentVolumeClaim:
+          claimName: timestamper-pv-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: timestamper-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
