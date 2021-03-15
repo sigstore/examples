@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keydetector
+  labels:
+    app: keydetector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keydetector
+  template:
+    metadata:
+      labels:
+        app: keydetector
+    spec:
+      containers:
+      - name: keydetector
+        image: ko://github.com/sigstore/examples/keydetector
+        ports:
+        args: [
+          "/etc/keys/cosign.pub",
+          "$(EMAIL)",
+        ]
+        volumeMounts:
+        - name: pub
+          mountPath: "/etc/keys/"
+          readOnly: true
+        env:
+        - name: SENDGRID_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: emailer
+              key: sendgrid_api_key
+        - name: EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: emailer
+              key: email
+      volumes:
+      - name: pub
+        secret:
+          secretName: emailer
+          items:
+            - key: pub
+              path: cosign.pub
+      
