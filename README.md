@@ -72,7 +72,7 @@ gpg -u 0FA5742ABA39275E6ACCB728E568D0F620485E9F  --export --armor > public.key
 Then we can upload:
 ```shell
 $ rekor-cli upload --artifact release.tar.gz --signature release.tar.gz.sig --public-key public.key
-Created entry at index 1312, available at: https://api.rekor.dev/api/v1/log/entries/ca153cd0f350eecb028aeed298ef5bf74e8e7e5fa3d7f7d055ff51a0a0d489fd
+Created entry at index 1312, available at: https://rekor.sigstore.dev/api/v1/log/entries/ca153cd0f350eecb028aeed298ef5bf74e8e7e5fa3d7f7d055ff51a0a0d489fd
 ```
 
 If you remember the index and UUID, you can fetch the entry directly:
