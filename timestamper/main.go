@@ -34,7 +34,7 @@ type globals struct {
 }
 
 const (
-	rekorAddr = "https://api.rekor.dev"
+	rekorAddr = "https://rekor.sigstore.dev"
 	tsServer  = "https://freetsa.org/tsr"
 )
 
