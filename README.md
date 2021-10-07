@@ -36,7 +36,7 @@ uid                      Batman <lorenc.d@gmail.com>
 sub   rsa3072 2021-03-11 [E] [expires: 2023-03-11]
 ```
 
-Get and build the `rekor-cli` from: [github.com/sigstore/rekor](github.com/sigstore/rekor).
+Get and build the `rekor-cli` from: [github.com/sigstore/rekor](https://github.com/sigstore/rekor).
 
 
 ### Build and Sign your release!
